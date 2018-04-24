@@ -7,6 +7,12 @@ ifneq ($(filter lineage_starlte lineage_star2lte, $(TARGET_PRODUCT)),)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 endif
 
+ifneq ($(findstring carbon, $(TARGET_PRODUCT)),)
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-carbon
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.carbon.maintainer="vaughnn"
+endif
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
